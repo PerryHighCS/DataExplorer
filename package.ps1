@@ -12,6 +12,6 @@ Get-ChildItem -Directory | ForEach-Object {
     }
     $folderName = $_.Name
     $zipFileName = "$destinationDir\$folderName.zip"
-    Compress-Archive -Path $_.FullName -DestinationPath $zipFileName
+    Compress-Archive -Path (Join-Path $_.FullName "*") -DestinationPath $zipFileName -Force -CompressionLevel Optimal
     Write-Host "Created: $zipFileName"
 }
